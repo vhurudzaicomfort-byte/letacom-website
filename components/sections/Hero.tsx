@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRightIcon } from "@/components/icons";
 
 interface HeroProps {
@@ -9,6 +10,7 @@ interface HeroProps {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   backgroundClass?: string;
+  backgroundImage?: string;
 }
 
 export function Hero({
@@ -19,17 +21,35 @@ export function Hero({
   primaryCta,
   secondaryCta,
   backgroundClass = "bg-primary-900",
+  backgroundImage,
 }: HeroProps) {
   const isInner = variant === "inner";
   const paddingClass = isInner ? "py-16 md:py-20" : "py-20 md:py-28 lg:py-36";
 
   return (
     <section className={`relative ${backgroundClass} ${paddingClass} overflow-hidden`}>
+      {/* Background image */}
+      {backgroundImage && (
+        <>
+          <Image
+            src={backgroundImage}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-primary-900/75" />
+        </>
+      )}
+
       {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-        backgroundSize: "48px 48px",
-      }} />
+      {!backgroundImage && (
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }} />
+      )}
 
       <div className="container-site relative z-10">
         <div className="max-w-3xl">

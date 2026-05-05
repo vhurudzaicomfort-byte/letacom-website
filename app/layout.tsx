@@ -3,6 +3,7 @@ import { Inter, Ubuntu } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { MobileStickyCTABar } from "@/components/layout/MobileStickyCTABar";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,9 +50,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${ubuntu.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-20 lg:pb-0">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <MobileStickyCTABar />
       </body>
     </html>
   );

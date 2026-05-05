@@ -34,3 +34,20 @@ export { HandshakeIcon } from './features/HandshakeIcon';
 export { ShieldIcon } from './features/ShieldIcon';
 export { ClockIcon } from './features/ClockIcon';
 export { SupportIcon } from './features/SupportIcon';
+
+// Capability icons
+export { SourcingIcon } from './capabilities/SourcingIcon';
+export { DesignIcon } from './capabilities/DesignIcon';
+export { TestingIcon } from './capabilities/TestingIcon';
+export { CustomisationIcon } from './capabilities/CustomisationIcon';
+export { PartnershipIcon } from './capabilities/PartnershipIcon';
+
+// Heritage icons
+export { TimelineIcon } from './heritage/TimelineIcon';
+export { TradeRouteIcon } from './heritage/TradeRouteIcon';
+export { AfricaContinentIcon } from './heritage/AfricaContinentIcon';
+export { MigrationIcon } from './heritage/MigrationIcon';
+export { ScrollIcon } from './heritage/ScrollIcon';
+export { CrownIcon } from './heritage/CrownIcon';
+export { CaravanIcon } from './heritage/CaravanIcon';
+export { DhowIcon } from './heritage/DhowIcon';

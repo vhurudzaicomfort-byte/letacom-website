@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { images } from "@/lib/images";
 import { Hero } from "@/components/sections/Hero";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
@@ -18,6 +19,7 @@ export default function SolutionsPage() {
         variant="inner"
         eyebrow="Capabilities"
         title="Industrial Solutions, End to End"
+        backgroundImage={images.heroSolutions}
       />
 
       {/* Intro */}

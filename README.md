@@ -74,12 +74,12 @@ components/
 
 ## Placeholders
 
-Items marked with `[PLACEHOLDER]` need real client data:
-- Phone numbers
-- Team bios and photos
-- Client logos
-- Google Maps embed
-- Product images
+Items still pending real client assets:
+- `[CLIENT_LOGO_PLACEHOLDER]` — real client logos when approved for display
+- `[CASE_STUDY_PLACEHOLDER]` — concrete case studies once cleared with clients
+- Product photography — replace generic Unsplash imagery with bespoke shots when available
+
+The team is intentionally framed collectively — there are no individual founder names, photos, or bios anywhere on the site, and there should never be.
 
 ## Deployment
 

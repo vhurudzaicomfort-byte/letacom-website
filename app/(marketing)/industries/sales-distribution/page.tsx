@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { images } from "@/lib/images";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { CheckIcon } from "@/components/icons";
@@ -52,6 +53,7 @@ export default function SalesDistributionPage() {
         subtitle="We supply the physical and digital assets that power distribution networks — from branded coolers and POS displays to handheld devices and route planning technology, delivered at scale across African markets."
         primaryCta={{ label: "Request a Quote", href: "/request-quote" }}
         secondaryCta={{ label: "All Industries", href: "/industries" }}
+        backgroundImage={images.distribution}
       />
 
       {/* What We Supply */}

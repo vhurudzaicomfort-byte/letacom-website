@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { images } from "@/lib/images";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { IndustryCard } from "@/components/sections/IndustryCard";
 import { CTABanner } from "@/components/sections/CTABanner";
@@ -51,6 +52,7 @@ export default function IndustriesPage() {
         subtitle="We provide tailored sourcing and supply chain solutions for Africa's most important industrial sectors — from breweries and manufacturing plants to logistics fleets and distribution networks."
         primaryCta={{ label: "Request a Quote", href: "/request-quote" }}
         secondaryCta={{ label: "About Letacom", href: "/about" }}
+        backgroundImage={images.heroIndustries}
       />
 
       <section className="section-padding">

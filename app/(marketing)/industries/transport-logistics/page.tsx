@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { images } from "@/lib/images";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { CheckIcon } from "@/components/icons";
@@ -52,6 +53,7 @@ export default function TransportLogisticsPage() {
         subtitle="We equip logistics operators with fleet maintenance parts, warehouse infrastructure, tracking technology, and cold chain systems — keeping your operations moving across Africa's toughest corridors."
         primaryCta={{ label: "Request a Quote", href: "/request-quote" }}
         secondaryCta={{ label: "All Industries", href: "/industries" }}
+        backgroundImage={images.logistics}
       />
 
       {/* What We Supply */}

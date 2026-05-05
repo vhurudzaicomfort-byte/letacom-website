@@ -1,21 +1,35 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
   name: string;
   shortDescription: string;
   categorySlug: string;
+  image?: string;
 }
 
 export function ProductCard({
   name,
   shortDescription,
   categorySlug,
+  image,
 }: ProductCardProps) {
   return (
     <div className="group bg-white border border-graphite-300/40 rounded overflow-hidden hover:shadow-md transition-shadow">
-      {/* Placeholder image area */}
-      <div className="aspect-[4/3] bg-graphite-100 flex items-center justify-center">
-        <span className="text-xs text-graphite-500 font-medium">[Product Image]</span>
+      <div className="aspect-[4/3] bg-graphite-100 relative overflow-hidden">
+        {image ? (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xs text-graphite-500 font-medium">[Product Image]</span>
+          </div>
+        )}
       </div>
       <div className="p-4">
         <h4 className="font-heading font-medium text-sm text-graphite-900 group-hover:text-primary-700 transition-colors">

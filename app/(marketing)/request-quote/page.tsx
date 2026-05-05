@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { images } from "@/lib/images";
 import { Hero } from "@/components/sections/Hero";
 import { CheckIcon, ArrowRightIcon, WhatsAppIcon } from "@/components/icons";
 
@@ -18,6 +19,7 @@ type FormData = {
   estimatedQuantity: string;
   timeline: string;
   budgetRange: string;
+  serviceTypes: string[];
   // Step 3
   additionalNotes: string;
   consent: boolean;
@@ -37,10 +39,29 @@ const initialFormData: FormData = {
   estimatedQuantity: "",
   timeline: "",
   budgetRange: "",
+  serviceTypes: [],
   additionalNotes: "",
   consent: false,
   website: "",
 };
+
+const VALID_CATEGORIES = new Set([
+  "equipment",
+  "accessories",
+  "spare-parts",
+  "tools",
+  "systems",
+  "it-hardware-software",
+  "branded-consumables",
+]);
+
+const serviceTypeOptions = [
+  { value: "sourcing-only", label: "Sourcing only" },
+  { value: "sourcing-local-manufacturing", label: "Sourcing + local manufacturing" },
+  { value: "custom-design", label: "Custom design" },
+  { value: "installation-training", label: "Installation & training" },
+  { value: "ongoing-support", label: "Ongoing support" },
+];
 
 const industryOptions = [
   "Breweries & Beverage",
@@ -84,9 +105,30 @@ export default function RequestQuotePage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  function update(field: keyof FormData, value: string | boolean) {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+  // Pre-fill product category from ?category= query param
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("category");
+    if (cat && VALID_CATEGORIES.has(cat)) {
+      setFormData((prev) =>
+        prev.productCategory ? prev : { ...prev, productCategory: cat }
+      );
+    }
+  }, []);
+
+  function update(field: keyof FormData, value: string | boolean | string[]) {
+    setFormData((prev) => ({ ...prev, [field]: value } as FormData));
     setErrors((prev) => ({ ...prev, [field]: undefined }));
+  }
+
+  function toggleServiceType(value: string) {
+    setFormData((prev) => ({
+      ...prev,
+      serviceTypes: prev.serviceTypes.includes(value)
+        ? prev.serviceTypes.filter((v) => v !== value)
+        : [...prev.serviceTypes, value],
+    }));
   }
 
   function validateStep(): boolean {
@@ -148,6 +190,7 @@ export default function RequestQuotePage() {
           variant="inner"
           eyebrow="Request a Quote"
           title="Request Received"
+          backgroundImage={images.heroRFQ}
         />
         <section className="section-padding">
           <div className="container-site max-w-xl text-center">
@@ -183,6 +226,7 @@ export default function RequestQuotePage() {
         eyebrow="Get Started"
         title="Request a Quote"
         subtitle="Tell us what you need. Our team will source it, price it, and get back to you within one business day."
+        backgroundImage={images.heroRFQ}
       />
 
       <section className="section-padding">
@@ -332,6 +376,40 @@ export default function RequestQuotePage() {
                 onChange={(v) => update("budgetRange", v)}
                 options={budgetOptions}
               />
+
+              <fieldset>
+                <legend className="block text-sm font-medium text-graphite-700 mb-2">
+                  Service Type{" "}
+                  <span className="text-graphite-500 font-normal">
+                    (select all that apply)
+                  </span>
+                </legend>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {serviceTypeOptions.map((opt) => {
+                    const checked = formData.serviceTypes.includes(opt.value);
+                    return (
+                      <label
+                        key={opt.value}
+                        className={`flex items-center gap-3 px-4 py-3 border rounded cursor-pointer transition-colors ${
+                          checked
+                            ? "border-primary-500 bg-primary-500/5"
+                            : "border-graphite-300 hover:border-graphite-500"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={checked}
+                          onChange={() => toggleServiceType(opt.value)}
+                          className="w-4 h-4 rounded border-graphite-300 text-primary-500 focus:ring-primary-500"
+                        />
+                        <span className="text-sm text-graphite-900">
+                          {opt.label}
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </fieldset>
             </div>
           )}
 

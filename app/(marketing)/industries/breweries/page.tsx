@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { images } from "@/lib/images";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { CheckIcon } from "@/components/icons";
@@ -52,6 +53,7 @@ export default function BreweriesPage() {
         subtitle="From raw material processing to final packaging, we source and deliver every component your brewery needs — fermentation systems, draught equipment, bottling lines, branded glassware, and ongoing consumables."
         primaryCta={{ label: "Request a Quote", href: "/request-quote" }}
         secondaryCta={{ label: "All Industries", href: "/industries" }}
+        backgroundImage={images.brewery}
       />
 
       {/* What We Supply */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { images } from "@/lib/images";
 import { Hero } from "@/components/sections/Hero";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
@@ -80,6 +81,7 @@ export default function ProductsPage() {
         eyebrow="Product Catalogue"
         title="Industrial Products, Sourced for Africa"
         subtitle="Browse our curated product categories. Every item is sourced from verified manufacturers and available through our procurement process."
+        backgroundImage={images.heroProducts}
       />
 
       <section className="section-padding">

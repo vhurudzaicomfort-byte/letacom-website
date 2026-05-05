@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
+import { images } from "@/lib/images";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { CheckIcon } from "@/components/icons";
@@ -52,6 +53,7 @@ export default function ManufacturingPage() {
         subtitle="We source production machinery, automation components, precision tools, and maintenance consumables for manufacturers across Africa — from single spare parts to complete line installations."
         primaryCta={{ label: "Request a Quote", href: "/request-quote" }}
         secondaryCta={{ label: "All Industries", href: "/industries" }}
+        backgroundImage={images.manufacturing}
       />
 
       {/* What We Supply */}

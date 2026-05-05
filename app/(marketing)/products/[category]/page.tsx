@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { ProductCard } from "@/components/sections/ProductCard";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { images } from "@/lib/images";
 
 const categories: Record<
   string,
-  { name: string; description: string; items: { name: string; shortDescription: string }[] }
+  { name: string; description: string; heroImage: string; items: { name: string; shortDescription: string }[] }
 > = {
   equipment: {
     name: "Industrial Equipment",
+    heroImage: images.equipment,
     description:
       "Production machinery, processing equipment, and industrial systems built for demanding manufacturing and brewing environments across Africa.",
     items: [
@@ -25,6 +28,7 @@ const categories: Record<
   },
   accessories: {
     name: "Accessories",
+    heroImage: images.accessories,
     description:
       "Complementary components, fittings, and add-ons that extend the functionality and lifespan of your industrial equipment.",
     items: [
@@ -40,6 +44,7 @@ const categories: Record<
   },
   "spare-parts": {
     name: "Spare Parts",
+    heroImage: images.spareParts,
     description:
       "OEM and aftermarket replacement parts to minimise downtime and keep your operations running at peak efficiency.",
     items: [
@@ -55,6 +60,7 @@ const categories: Record<
   },
   tools: {
     name: "Tools & Workshop",
+    heroImage: images.tools,
     description:
       "Professional hand tools, power tools, and workshop equipment for maintenance, installation, and fabrication tasks.",
     items: [
@@ -70,6 +76,7 @@ const categories: Record<
   },
   systems: {
     name: "Systems",
+    heroImage: images.systems,
     description:
       "Complete integrated systems designed for turnkey installation, from draught dispense to full process automation lines.",
     items: [
@@ -85,6 +92,7 @@ const categories: Record<
   },
   "it-hardware-software": {
     name: "IT Hardware & Software",
+    heroImage: images.itHardware,
     description:
       "Enterprise-grade technology solutions including POS, fleet management, networking, and business software for modern operations.",
     items: [
@@ -100,6 +108,7 @@ const categories: Record<
   },
   "branded-consumables": {
     name: "Branded Consumables",
+    heroImage: images.brandedConsumables,
     description:
       "Custom-branded merchandise, glassware, packaging, and promotional materials that reinforce your brand at every touchpoint.",
     items: [
@@ -156,6 +165,7 @@ export default async function CategoryPage({
         eyebrow="Products"
         title={data.name}
         subtitle={data.description}
+        backgroundImage={data.heroImage}
       />
 
       <section className="section-padding">

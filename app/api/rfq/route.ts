@@ -77,6 +77,14 @@ export async function POST(request: Request) {
               <tr><td style="padding: 4px 8px; font-weight: bold;">Budget:</td><td style="padding: 4px 8px;">${body.budgetRange || "Not specified"}</td></tr>
             </table>
 
+            ${
+              Array.isArray(body.serviceTypes) && body.serviceTypes.length > 0
+                ? `<h3 style="color: #2A2F36;">Service Type</h3><ul style="color: #5A6470; padding-left: 20px;">${body.serviceTypes
+                    .map((s: string) => `<li>${s}</li>`)
+                    .join("")}</ul>`
+                : ""
+            }
+
             ${body.additionalNotes ? `<h3 style="color: #2A2F36;">Additional Notes</h3><p style="color: #5A6470;">${body.additionalNotes}</p>` : ""}
 
             <hr style="border: 1px solid #E5E7EB;" />
