@@ -37,32 +37,31 @@ export function HomeHero() {
       {/* Soft noise texture for editorial polish */}
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
 
-      <div className="relative z-10 container-site py-24 md:py-32 lg:py-40">
-        <div className="max-w-2xl reveal-stagger">
+      <div className="relative z-10 container-site py-24 sm:py-28 md:py-32 lg:py-40">
+        <div className="max-w-3xl reveal-stagger">
           <h1
-            className="reveal font-heading text-white leading-none font-medium tracking-[-0.025em] text-[44px] sm:text-5xl md:text-[56px]"
+            className="reveal font-heading text-white leading-[1.02] font-medium tracking-[-0.025em] text-[52px] sm:text-[64px] md:text-[80px] lg:text-[92px]"
           >
             <span className="block reveal">We supply.</span>
             <span className="block reveal">We deliver.</span>
-            <span className="block reveal" style={{ color: "#E25822" }}>
+            <span className="block reveal text-accent-500">
               We stay.
             </span>
           </h1>
 
           <p
-            className="reveal mt-7 text-sm leading-[1.55] max-w-[480px]"
-            style={{ color: "rgba(255,255,255,0.78)" }}
+            className="reveal mt-7 md:mt-8 text-base md:text-lg leading-[1.55] max-w-[520px]"
+            style={{ color: "rgba(255,255,255,0.82)" }}
           >
             Industrial equipment, components, and systems delivered across
             Southern Africa — installed, supported, and maintained by one
             accountable team.
           </p>
 
-          <div className="reveal mt-9 flex flex-wrap gap-4">
+          <div className="reveal mt-9 md:mt-10 flex flex-wrap gap-4">
             <Link
               href="/request-quote"
-              className="hover-lift group inline-flex items-center gap-2 px-7 py-3.5 text-white font-medium rounded shadow-[0_8px_30px_-8px_rgba(226,88,34,0.5)] transition-colors duration-300"
-              style={{ backgroundColor: "#E25822" }}
+              className="hover-lift group inline-flex items-center gap-2 px-7 py-3.5 bg-accent-500 text-white font-medium rounded shadow-[0_8px_30px_-8px_rgba(226,88,34,0.5)] hover:bg-accent-600 hover:shadow-[0_12px_36px_-8px_rgba(226,88,34,0.7)] transition-colors duration-300"
             >
               Request a Quote
               <ArrowRightIcon
@@ -72,10 +71,7 @@ export function HomeHero() {
             </Link>
             <Link
               href="/products"
-              className="hover-lift inline-flex items-center gap-2 px-7 py-3.5 text-white font-medium rounded transition-colors duration-300 hover:bg-white/10"
-              style={{
-                border: "1px solid rgba(255,255,255,0.35)",
-              }}
+              className="hover-lift inline-flex items-center gap-2 px-7 py-3.5 text-white font-medium rounded border border-white/35 hover:border-white/60 hover:bg-white/10 transition-colors duration-300"
             >
               Browse Products
             </Link>

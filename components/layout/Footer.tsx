@@ -5,7 +5,10 @@ import {
   PhoneIcon,
   LocationIcon,
   WhatsAppIcon,
-  LinkedInIcon,
+  LinkedInGlyphIcon,
+  XIcon,
+  FacebookIcon,
+  InstagramIcon,
 } from "@/components/icons";
 
 const companyLinks = [
@@ -30,10 +33,17 @@ const departmentEmails = [
   { label: "info@letacom.co.za", href: "mailto:info@letacom.co.za" },
 ];
 
+const socials: { label: string; href: string; Icon: React.ComponentType<{ size?: number; className?: string }> }[] = [
+  { label: "LinkedIn", href: "https://linkedin.com", Icon: LinkedInGlyphIcon },
+  { label: "X", href: "https://x.com", Icon: XIcon },
+  { label: "Facebook", href: "https://facebook.com", Icon: FacebookIcon },
+  { label: "Instagram", href: "https://instagram.com", Icon: InstagramIcon },
+];
+
 export function Footer() {
   return (
     <footer className="bg-primary-900 text-white">
-      <div className="container-site section-padding">
+      <div className="container-site py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Company */}
           <div>
@@ -43,23 +53,28 @@ export function Footer() {
                 alt="LETACOM"
                 width={1080}
                 height={137}
-                className="h-8 w-auto"
+                priority={false}
+                className="h-10 md:h-11 w-auto"
+                style={{ height: "auto", maxHeight: "44px" }}
               />
             </Link>
-            <p className="text-sm text-on-navy-muted leading-relaxed mb-5">
+            <p className="text-sm text-on-navy-muted leading-relaxed mb-6">
               We design, build, supply, install, and support industrial systems
               for African industry — one accountable team, end-to-end.
             </p>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded bg-primary-700 hover:bg-primary-500 transition-colors"
-                aria-label="Letacom on LinkedIn"
-              >
-                <LinkedInIcon size={18} />
-              </a>
+            <div className="flex items-center gap-2.5">
+              {socials.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Letacom on ${label}`}
+                  className="w-9 h-9 flex items-center justify-center rounded bg-primary-700 text-on-navy hover:bg-accent-500 hover:text-white transition-colors duration-300"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -159,12 +174,21 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-primary-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-primary-700 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p className="text-xs text-on-navy-subtle">
             &copy; {new Date().getFullYear()} Letacom South Africa. All rights reserved.
           </p>
           <p className="text-xs text-on-navy-subtle">
-            Designed, built, supplied, and supported across African industry.
+            Website designed and developed by{" "}
+            <a
+              href="https://www.synvastech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline text-on-navy hover:text-white transition-colors"
+            >
+              Synvas Technologies
+            </a>
+            .
           </p>
         </div>
       </div>

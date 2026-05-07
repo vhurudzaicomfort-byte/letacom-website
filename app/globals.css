@@ -15,10 +15,12 @@
   --color-primary-500: #1E5A96;
   --color-primary-300: #4A87C2;
 
-  /* Accent — Amber/copper */
-  --color-accent-600: #C2691A;
-  --color-accent-500: #E07B1F;
-  --color-accent-300: #F2A65A;
+  /* Accent — Standardized warm orange.
+     -500 is THE brand orange; -600 is the hover-darker; -300 is a lighter
+     derivative for use on dark navy where -500 may sit slightly heavy. */
+  --color-accent-600: #B73E1A;
+  --color-accent-500: #E25822;
+  --color-accent-300: #F4825B;
 
   /* Neutrals */
   --color-graphite-900: #111418;
@@ -52,6 +54,7 @@
   /* Brand mark — the bright blue used for "COM" in the LETACOM wordmark.
      Matches the supplied logo. Distinct from primary-500 (UI button blue). */
   --color-brand-blue: #1A6BFF;
+  --color-brand-blue-deep: #1556CC;
   --color-brand-blue-soft: #4F8DFF;
 
   /* Motion */

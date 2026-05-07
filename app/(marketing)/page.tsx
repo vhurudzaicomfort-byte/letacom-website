@@ -384,7 +384,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA — rewritten copy + WhatsApp secondary link */}
-      <section className="section-padding bg-primary-900 border-t border-primary-700">
+      <section className="pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-14 lg:pb-16 bg-primary-900 border-t border-primary-700">
         <div className="container-site text-center">
           <h2 className="reveal font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-white tracking-tight">
             Have a spec? Send it.

@@ -229,7 +229,7 @@ export default function RequestQuotePage() {
         backgroundImage={images.heroRFQ}
       />
 
-      <section className="section-padding">
+      <section className="pt-12 md:pt-16 lg:pt-20 pb-10 md:pb-12 lg:pb-14">
         <div className="container-site max-w-2xl">
           {/* Progress */}
           <div className="flex items-center gap-2 mb-10">
@@ -466,7 +466,7 @@ export default function RequestQuotePage() {
             {step < 2 ? (
               <button
                 onClick={nextStep}
-                className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary-500 text-white font-heading font-medium rounded hover:bg-primary-700 transition-colors"
+                className="hover-lift inline-flex items-center gap-2 px-6 py-2.5 bg-brand-blue text-white font-heading font-medium rounded shadow-[0_4px_18px_-6px_rgba(26,107,255,0.5)] hover:bg-brand-blue-deep hover:shadow-[0_8px_22px_-6px_rgba(26,107,255,0.7)] transition-colors"
               >
                 Continue
                 <ArrowRightIcon size={16} />

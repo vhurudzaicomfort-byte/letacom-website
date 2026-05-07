@@ -254,7 +254,7 @@ export default function ContactPage() {
       </section>
 
       {/* General Contact Form */}
-      <section className="section-padding bg-graphite-100">
+      <section className="pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-14 lg:pb-16 bg-graphite-100">
         <div className="container-site max-w-2xl">
           <SectionHeader
             eyebrow="Send Us a Message"

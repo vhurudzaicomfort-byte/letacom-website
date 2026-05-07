@@ -42,6 +42,12 @@ export { TestingIcon } from './capabilities/TestingIcon';
 export { CustomisationIcon } from './capabilities/CustomisationIcon';
 export { PartnershipIcon } from './capabilities/PartnershipIcon';
 
+// Social icons (filled-glyph style for footer/social rows)
+export { XIcon } from './social/XIcon';
+export { FacebookIcon } from './social/FacebookIcon';
+export { InstagramIcon } from './social/InstagramIcon';
+export { LinkedInGlyphIcon } from './social/LinkedInGlyphIcon';
+
 // Heritage icons
 export { TimelineIcon } from './heritage/TimelineIcon';
 export { TradeRouteIcon } from './heritage/TradeRouteIcon';
