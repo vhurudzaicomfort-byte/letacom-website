@@ -350,6 +350,26 @@ export const productCategories: ProductCategory[] = [
         image: "/images/products/tap-handles.jpg",
       },
       {
+        name: "Custom Ice Buckets",
+        shortDescription: "Branded acrylic, stainless, and double-walled ice buckets for on-trade and hospitality venues.",
+        image: "/media/consumable-glassware.jpg",
+      },
+      {
+        name: "Glass Mats",
+        shortDescription: "Custom-printed glass mats — micro-fibre, leather, and rubber finishes for bars and tasting rooms.",
+        image: "/media/featured-draught-poster.jpg",
+      },
+      {
+        name: "Counter Mats",
+        shortDescription: "Full-bar counter mats in rubber and pulpboard with edge-to-edge brand artwork.",
+        image: "/media/consumable-glasses.jpg",
+      },
+      {
+        name: "Custom Posters",
+        shortDescription: "Large-format brand posters — matte, gloss, and weather-resistant finishes for venue and retail use.",
+        image: "/media/heritage-africa-flags.jpg",
+      },
+      {
         name: "Cleaning Chemicals",
         shortDescription: "Private-label line cleaners and sanitisers for draught system maintenance.",
         image: "/images/products/cleaning-chemicals.jpg",

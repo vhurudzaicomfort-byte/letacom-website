@@ -35,7 +35,7 @@ export function SectionHeader({
         <p
           className={`mt-4 text-lg leading-relaxed max-w-2xl ${
             centered ? "mx-auto" : ""
-          } ${light ? "text-primary-300" : "text-graphite-500"}`}
+          } ${light ? "text-on-navy-muted" : "text-graphite-500"}`}
         >
           {subtitle}
         </p>

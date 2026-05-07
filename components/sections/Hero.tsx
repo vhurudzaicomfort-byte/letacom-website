@@ -52,39 +52,42 @@ export function Hero({
       )}
 
       <div className="container-site relative z-10">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl reveal-stagger">
           {eyebrow && (
-            <p className="font-heading text-sm font-medium uppercase tracking-wider text-accent-300 mb-4">
+            <p className="reveal font-heading text-sm font-medium uppercase tracking-[0.18em] text-accent-300 mb-4">
               {eyebrow}
             </p>
           )}
           <h1
-            className={`font-heading font-bold text-white leading-tight ${
+            className={`reveal font-heading font-bold text-white leading-tight tracking-tight ${
               isInner ? "text-3xl md:text-4xl lg:text-5xl" : "text-4xl md:text-5xl lg:text-6xl"
             }`}
           >
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-5 text-lg md:text-xl text-primary-300 leading-relaxed max-w-2xl">
+            <p className="reveal mt-5 text-lg md:text-xl text-on-navy leading-relaxed max-w-2xl">
               {subtitle}
             </p>
           )}
           {(primaryCta || secondaryCta) && (
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="reveal mt-8 flex flex-wrap gap-4">
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-heading font-medium rounded hover:bg-accent-600 transition-colors"
+                  className="hover-lift group inline-flex items-center gap-2 px-6 py-3 bg-accent-500 text-white font-heading font-medium rounded shadow-[0_8px_30px_-8px_rgba(226,88,34,0.5)] hover:bg-accent-600"
                 >
                   {primaryCta.label}
-                  <ArrowRightIcon size={18} />
+                  <ArrowRightIcon
+                    size={18}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
                 </Link>
               )}
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white font-heading font-medium rounded hover:bg-white/10 transition-colors"
+                  className="hover-lift inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white font-heading font-medium rounded hover:bg-white/10 hover:border-white/60 transition-colors"
                 >
                   {secondaryCta.label}
                 </Link>

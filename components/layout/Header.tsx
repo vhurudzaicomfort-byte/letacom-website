@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { MenuIcon, CloseIcon, ChevronIcon } from "@/components/icons";
 
@@ -94,24 +95,28 @@ export function Header() {
       <div className="container-site">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <span className="font-heading text-2xl lg:text-3xl font-bold tracking-tight">
-              <span className="text-primary-900">LETA</span>
-              <span className="text-primary-500">COM</span>
-            </span>
+          <Link href="/" aria-label="Letacom South Africa — home" className="flex-shrink-0 block">
+            <Image
+              src="/brand/letacom-logo.png"
+              alt="LETACOM"
+              width={1080}
+              height={137}
+              priority
+              className="h-7 lg:h-9 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             <Link
               href="/"
-              className="text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
+              className="link-underline text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
+              className="link-underline text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
             >
               About
             </Link>
@@ -122,7 +127,7 @@ export function Header() {
             />
             <Link
               href="/solutions"
-              className="text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
+              className="link-underline text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
             >
               Solutions
             </Link>
@@ -133,7 +138,7 @@ export function Header() {
             />
             <Link
               href="/contact"
-              className="text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
+              className="link-underline text-sm font-medium text-graphite-700 hover:text-primary-700 transition-colors"
             >
               Contact
             </Link>
@@ -143,7 +148,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/request-quote"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 bg-accent-500 text-white text-sm font-heading font-medium rounded hover:bg-accent-600 transition-colors"
+              className="hover-lift hidden sm:inline-flex items-center px-5 py-2.5 bg-accent-500 text-white text-sm font-heading font-medium rounded shadow-[0_4px_20px_-6px_rgba(226,88,34,0.55)] hover:bg-accent-600 hover:shadow-[0_8px_24px_-6px_rgba(226,88,34,0.7)]"
             >
               Request a Quote
             </Link>

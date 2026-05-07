@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   EmailIcon,
   PhoneIcon,
@@ -23,10 +24,10 @@ const industryLinks = [
 ];
 
 const departmentEmails = [
-  { label: "hello@letacom.co.za", purpose: "general", href: "mailto:hello@letacom.co.za" },
-  { label: "sales@letacom.co.za", purpose: "sales / RFQs", href: "mailto:sales@letacom.co.za" },
-  { label: "support@letacom.co.za", purpose: "after-sales", href: "mailto:support@letacom.co.za" },
-  { label: "info@letacom.co.za", purpose: "info", href: "mailto:info@letacom.co.za" },
+  { label: "sales@letacom.co.za", href: "mailto:sales@letacom.co.za" },
+  { label: "support@letacom.co.za", href: "mailto:support@letacom.co.za" },
+  { label: "hello@letacom.co.za", href: "mailto:hello@letacom.co.za" },
+  { label: "info@letacom.co.za", href: "mailto:info@letacom.co.za" },
 ];
 
 export function Footer() {
@@ -36,15 +37,18 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Company */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-heading text-2xl font-bold tracking-tight">
-                <span className="text-white">LETA</span>
-                <span className="text-primary-300">COM</span>
-              </span>
+            <Link href="/" aria-label="Letacom South Africa — home" className="inline-block mb-5">
+              <Image
+                src="/brand/letacom-logo-white.png"
+                alt="LETACOM"
+                width={1080}
+                height={137}
+                className="h-8 w-auto"
+              />
             </Link>
-            <p className="text-sm text-primary-300 leading-relaxed mb-5">
-              Sourced globally. Designed, built, and supported locally. Cape to
-              Cairo, in the African spirit of trade.
+            <p className="text-sm text-on-navy-muted leading-relaxed mb-5">
+              Industrial supply, procurement, and lifecycle support for African
+              industry — sourced globally, designed and built locally.
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -61,7 +65,7 @@ export function Footer() {
 
           {/* Industries */}
           <div>
-            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-primary-300 mb-4">
+            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-on-navy mb-4">
               Industries
             </h3>
             <ul className="space-y-2.5">
@@ -69,7 +73,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="link-underline text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -80,7 +84,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-primary-300 mb-4">
+            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-on-navy mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2.5">
@@ -88,7 +92,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="link-underline text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -99,12 +103,12 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-primary-300 mb-4">
+            <h3 className="font-heading font-medium text-sm uppercase tracking-wider text-on-navy mb-4">
               Contact
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5">
-                <LocationIcon size={16} className="text-primary-300 mt-0.5 flex-shrink-0" />
+                <LocationIcon size={16} className="text-on-navy-muted mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-white/70">
                   47 Meadow Avenue, Equestria 0184,
                   <br />
@@ -112,7 +116,7 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
-                <PhoneIcon size={16} className="text-primary-300 flex-shrink-0" />
+                <PhoneIcon size={16} className="text-on-navy-muted flex-shrink-0" />
                 <a
                   href="tel:+27630769938"
                   className="text-sm text-white/70 hover:text-white transition-colors"
@@ -121,7 +125,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-2.5">
-                <WhatsAppIcon size={16} className="text-primary-300 flex-shrink-0" />
+                <WhatsAppIcon size={16} className="text-on-navy-muted flex-shrink-0" />
                 <a
                   href="https://wa.me/27630769938"
                   target="_blank"
@@ -133,29 +137,33 @@ export function Footer() {
               </li>
             </ul>
 
-            <ul className="mt-4 pt-4 border-t border-primary-700 space-y-1.5">
-              {departmentEmails.map((d) => (
-                <li key={d.href} className="flex items-baseline gap-2 text-xs">
-                  <EmailIcon size={12} className="text-primary-300 flex-shrink-0 self-center" />
-                  <a
-                    href={d.href}
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    {d.label}
-                  </a>
-                  <span className="text-primary-300">— {d.purpose}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-5 pt-5 border-t border-primary-700">
+              <p className="font-heading text-[11px] font-medium uppercase tracking-[0.18em] text-on-navy-subtle mb-3">
+                Direct contact
+              </p>
+              <ul className="space-y-1.5">
+                {departmentEmails.map((d) => (
+                  <li key={d.href} className="flex items-center gap-2.5">
+                    <EmailIcon size={12} className="text-on-navy-muted flex-shrink-0" />
+                    <a
+                      href={d.href}
+                      className="link-underline text-xs text-white/75 hover:text-white transition-colors"
+                    >
+                      {d.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-primary-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-primary-300">
+          <p className="text-xs text-on-navy-subtle">
             &copy; {new Date().getFullYear()} Letacom South Africa. All rights reserved.
           </p>
-          <p className="text-xs text-primary-300 italic">
+          <p className="text-xs text-on-navy-subtle italic">
             Sourced globally. Designed, built, and supported locally.
           </p>
         </div>

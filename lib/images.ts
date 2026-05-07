@@ -1,46 +1,68 @@
-// Free stock images from Unsplash — all free for commercial use
-// Format: https://images.unsplash.com/photo-ID?w=WIDTH&q=QUALITY&auto=format&fit=crop
+// Local media assets curated for Letacom — see public/media/.
+// Filenames are semantic so context stays readable in the JSX.
+// External Unsplash URLs are preserved as fallbacks for routes not yet
+// updated to local imagery.
 
 export const images = {
   // Heroes
-  heroMain: "https://images.unsplash.com/photo-1504917595217-d4dc5ede4c21?w=1920&q=80&auto=format&fit=crop", // industrial factory
-  heroAbout: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80&auto=format&fit=crop", // industrial tech
-  heroIndustries: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1920&q=80&auto=format&fit=crop", // manufacturing
-  heroSolutions: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80&auto=format&fit=crop", // warehouse logistics
-  heroProducts: "https://images.unsplash.com/photo-1537462715759-4e93e09f673e?w=1920&q=80&auto=format&fit=crop", // industrial equipment
-  heroContact: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format&fit=crop", // office
-  heroRFQ: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80&auto=format&fit=crop", // business meeting
+  heroMain: "/media/hero-kilimanjaro.jpg", // Built for Africa — Kilimanjaro + acacia
+  heroAbout: "/media/about-worker.jpg", // African industrial worker, hard hat
+  heroIndustries: "/media/heritage-savanna.jpg", // Savanna sunset — Cape-to-Cairo evocation
+  heroSolutions: "/media/industry-manufacturing.jpg", // Factory assembly line
+  heroProducts: "/media/industry-breweries.jpg", // Brewery tanks
+  heroContact: "/media/engagement-meeting.jpg", // Conference room, African team
+  heroRFQ: "/media/team-meeting.jpg", // Diverse team in glass-walled meeting room
 
-  // Industry pages
-  brewery: "https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=1920&q=80&auto=format&fit=crop", // brewery tanks
-  manufacturing: "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1920&q=80&auto=format&fit=crop", // factory floor
-  logistics: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80&auto=format&fit=crop", // warehouse
-  distribution: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=80&auto=format&fit=crop", // distribution warehouse
+  // Industry cards (home grid)
+  brewery: "/media/industry-breweries.jpg",
+  manufacturing: "/media/industry-manufacturing.jpg",
+  logistics: "/media/industry-transport.jpg", // Doosan forklift + worker
+  distribution: "/media/industry-distribution.jpg", // POS terminal — point-of-sale
 
   // Featured solution
-  draughtSystem: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=1200&q=80&auto=format&fit=crop", // beer taps
+  draughtSystem: "/media/featured-draught-poster.jpg", // B&W bar glasses, moody
+  draughtPourVideo: "/media/video/draught-pour.mp4", // Close-up barman pouring lager
+  heritageBarrelsVideo: "/media/video/heritage-barrels.mp4", // Wooden barrels lined up
 
-  // Product categories
-  equipment: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop", // machinery
-  accessories: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format&fit=crop", // pipes fittings
-  spareParts: "https://images.unsplash.com/photo-1530124566582-a45a7e9a028e?w=800&q=80&auto=format&fit=crop", // gears mechanical
-  tools: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=80&auto=format&fit=crop", // workshop tools
-  systems: "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=800&q=80&auto=format&fit=crop", // beer taps systems
-  itHardware: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop", // server rack
-  brandedConsumables: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&q=80&auto=format&fit=crop", // branded glass
+  // Heritage / About
+  heritageSavanna: "/media/heritage-savanna.jpg",
+  heritageAfricaFlags: "/media/heritage-africa-flags.jpg",
+  aboutWorker: "/media/about-worker.jpg",
 
-  // Product items — generic industrial
+  // Partners / Engagement
+  partnersHandshake: "/media/partners-handshake.jpg",
+  engagementMeeting: "/media/engagement-meeting.jpg",
+  teamMeeting: "/media/team-meeting.jpg",
+  itCollaboration: "/media/it-collaboration.jpg",
+
+  // Product / consumable imagery
+  consumableGlassware: "/media/consumable-glassware.jpg", // Stack of beer mugs
+  consumableGlasses: "/media/consumable-glasses.jpg",
+  breweriesKegs: "/media/breweries-kegs.jpg",
+  equipmentExcavator: "/media/equipment-excavator.jpg",
+  lifestyleFamily: "/media/lifestyle-family.jpg",
+
+  // Product categories — fallback Unsplash for items without local imagery yet
+  equipment: "/media/industry-manufacturing.jpg",
+  accessories: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format&fit=crop",
+  spareParts: "https://images.unsplash.com/photo-1530124566582-a45a7e9a028e?w=800&q=80&auto=format&fit=crop",
+  tools: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=80&auto=format&fit=crop",
+  systems: "/media/featured-draught-poster.jpg",
+  itHardware: "/media/it-collaboration.jpg",
+  brandedConsumables: "/media/consumable-glassware.jpg",
+
+  // Product items — generic industrial fallback grid
   productGeneric: [
-    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ede4c21?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1537462715759-4e93e09f673e?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1530124566582-a45a7e9a028e?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=75&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=600&q=75&auto=format&fit=crop",
+    "/media/industry-manufacturing.jpg",
+    "/media/equipment-excavator.jpg",
+    "/media/industry-breweries.jpg",
+    "/media/breweries-kegs.jpg",
+    "/media/industry-transport.jpg",
+    "/media/industry-distribution.jpg",
+    "/media/it-collaboration.jpg",
+    "/media/consumable-glassware.jpg",
   ],
 
   // About page
-  aboutTeam: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop", // team collaboration
+  aboutTeam: "/media/team-meeting.jpg",
 } as const;

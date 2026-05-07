@@ -118,13 +118,13 @@ export default function AboutPage() {
               world, on Africa&apos;s terms.&rdquo;
             </p>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-              <p className="text-primary-300 leading-relaxed">
+              <p className="text-on-navy-muted leading-relaxed">
                 Long before colonial maps drew lines across Africa, the
                 Cape-to-Cairo corridor was already alive — as a trade route, a
                 migration path, and a thread of cultural exchange running the
                 length of the continent.
               </p>
-              <p className="text-primary-300 leading-relaxed">
+              <p className="text-on-navy-muted leading-relaxed">
                 The African Continental Free Trade Area (AfCFTA), launched in
                 2021, is the modern continuation of a Pan-African idea our
                 ancestors lived for centuries. Letacom positions itself inside
