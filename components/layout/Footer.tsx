@@ -47,8 +47,8 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-on-navy-muted leading-relaxed mb-5">
-              Industrial supply, procurement, and lifecycle support for African
-              industry — sourced globally, designed and built locally.
+              We design, build, supply, install, and support industrial systems
+              for African industry — one accountable team, end-to-end.
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -163,8 +163,8 @@ export function Footer() {
           <p className="text-xs text-on-navy-subtle">
             &copy; {new Date().getFullYear()} Letacom South Africa. All rights reserved.
           </p>
-          <p className="text-xs text-on-navy-subtle italic">
-            Sourced globally. Designed, built, and supported locally.
+          <p className="text-xs text-on-navy-subtle">
+            Designed, built, supplied, and supported across African industry.
           </p>
         </div>
       </div>

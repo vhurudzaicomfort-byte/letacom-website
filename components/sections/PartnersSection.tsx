@@ -1,33 +1,39 @@
 import Image from "next/image";
 import { images } from "@/lib/images";
 
-// Categorized partner / supplier showcase. Placeholder text wordmarks until real
-// partner logos are approved for display — flagged in CREDITS / README.
+// Categories Letacom serves. Per-supplier brand attribution is intentionally
+// omitted — the section communicates breadth of capability, not a logo wall.
 
-const categories: { title: string; partners: string[] }[] = [
+const categories: { title: string; description: string }[] = [
   {
     title: "Equipment & Systems",
-    partners: ["DOOSAN", "KOMATSU", "SIEMENS", "ABB INDUSTRIAL", "HITACHI"],
+    description:
+      "Industrial machinery, draught and process systems, and integrated production equipment for African operators.",
   },
   {
     title: "Brewery & Beverage",
-    partners: ["BREWTECH", "PADOVAN", "DELLA TOFFOLA", "KRONES PARTS"],
+    description:
+      "Brewing, fermentation, packaging, and dispense — engineered, supplied, and supported end-to-end.",
   },
   {
     title: "Tools & Workshop",
-    partners: ["MAKITA", "STANLEY", "BOSCH PRO", "DEWALT", "FLUKE"],
+    description:
+      "Professional hand tools, power tools, and workshop infrastructure for maintenance and production teams.",
   },
   {
-    title: "IT & POS",
-    partners: ["HP ENTERPRISE", "DELL POS", "EPSON RETAIL", "CISCO MERAKI"],
+    title: "IT & Point-of-Sale",
+    description:
+      "Enterprise IT, networking, and POS hardware for distributors, retailers, and operations across distributed sites.",
   },
   {
     title: "Consumables & Packaging",
-    partners: ["ARDAGH", "CONSOL GLASS", "MONDI BRAND", "GLOBAL PRINT"],
+    description:
+      "Branded glassware, packaging, printed materials, and recurring consumables programs at scale.",
   },
   {
     title: "Hospitality & Retail",
-    partners: ["RIEDEL", "STÖLZLE", "ROSENTHAL", "DURALEX"],
+    description:
+      "Bar, restaurant, and retail-floor equipment and consumables — built for premium operators.",
   },
 ];
 
@@ -48,48 +54,39 @@ export function PartnersSection() {
       <div className="relative container-site">
         <div className="max-w-3xl mb-12 md:mb-16 reveal">
           <p className="font-heading text-xs font-medium uppercase tracking-[0.2em] text-accent-500 mb-3">
-            Our Partners &amp; Suppliers
+            What We Cover
           </p>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-graphite-900 leading-tight tracking-tight">
-            Premium dealers, distributors, and platinum shoppers across
+            Engineering, supply, and lifecycle support across
             Southern Africa.
           </h2>
           <p className="mt-4 text-lg text-ink-muted leading-relaxed">
-            We work with leading global and local suppliers across products,
-            consumables, equipment, systems, accessories, hospitality, and
-            retail — bringing world-class engineering to African industry.
+            Six interlocking capability areas — industrial equipment, brewery
+            systems, tools, IT and POS, consumables, and hospitality — delivered
+            and supported by one accountable team.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 reveal-stagger">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 reveal-stagger">
           {categories.map((cat) => (
             <div
               key={cat.title}
-              className="reveal relative bg-white border-t border-graphite-300/40 pt-6"
+              className="reveal group relative pt-7 border-t border-graphite-300/40"
             >
               {/* Top accent line */}
-              <span className="absolute top-0 left-0 h-px bg-accent-500 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] w-3 group-hover:w-12" />
-              <p className="font-heading text-[11px] font-medium uppercase tracking-[0.18em] text-ink-subtle mb-4">
+              <span
+                aria-hidden
+                className="absolute top-0 left-0 h-px bg-accent-500 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-3 group-hover:w-12"
+              />
+              <h3 className="font-heading font-bold text-lg text-graphite-900 mb-3 tracking-tight">
                 {cat.title}
+              </h3>
+              <p className="text-sm md:text-[15px] text-ink-muted leading-relaxed">
+                {cat.description}
               </p>
-              <div className="flex flex-wrap gap-x-5 gap-y-3">
-                {cat.partners.map((p) => (
-                  <span
-                    key={p}
-                    className="partner-logo font-heading text-sm font-bold tracking-[0.14em] text-graphite-700 select-none cursor-default"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
-
-        <p className="mt-12 max-w-2xl text-sm text-ink-subtle italic">
-          Partner names shown for category illustration. Public partner
-          attribution is added per supplier agreement.
-        </p>
       </div>
     </section>
   );

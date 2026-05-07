@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { images } from "@/lib/images";
 import { HomeHero } from "@/components/sections/HomeHero";
-import { PartnersStrip } from "@/components/sections/PartnersStrip";
 import { PartnersSection } from "@/components/sections/PartnersSection";
 import { IndustryFeatureGrid } from "@/components/sections/IndustryFeatureGrid";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
@@ -49,34 +48,34 @@ const ORG_JSONLD = {
 
 const capabilities = [
   {
-    title: "Global Sourcing",
-    description:
-      "Strategic procurement from manufacturers across Asia, Europe, and beyond. World-class equipment and components for African industry.",
-  },
-  {
     title: "Local Design & Manufacturing",
     description:
-      "In-country design and manufacturing capability for components, fittings, and bespoke equipment tailored to African operating conditions.",
+      "We design, fabricate, and finish bespoke components and systems in South Africa — engineered for African operating conditions, lead times, and service realities.",
   },
   {
-    title: "Local Testing & Assembly",
+    title: "Engineering & Systems Integration",
     description:
-      "Equipment tested, assembled, and quality-verified locally before deployment, ensuring reliability under real operating conditions.",
+      "We integrate hardware, software, and services into unified working systems — draught dispense, process automation, production lines — tested and assembled before deployment.",
   },
   {
-    title: "Customisation",
+    title: "Customisation & Build",
     description:
-      "Solutions engineered to client specification — from draught system layouts to processing line configurations and branded consumables.",
+      "Solutions engineered to client specification — draught system layouts, processing line configurations, branded consumables programs, and bespoke fabrication.",
+  },
+  {
+    title: "Installation, Training & Support",
+    description:
+      "Site deployment, on-site operator training, after-sales support, spares programs, and long-term maintenance partnerships across the asset lifecycle.",
   },
   {
     title: "Local & Global Partnerships",
     description:
-      "Trusted partnerships with local fabricators, technicians, and international OEMs across the supply chain.",
+      "Trusted partnerships with local fabricators, technicians, and international OEMs across the supply chain — local accountability, global capability.",
   },
   {
-    title: "Support, Consulting & Training",
+    title: "Sourcing & Procurement",
     description:
-      "End-to-end aftercare: installation support, technical consulting, operator training, spare parts, long-term maintenance partnerships.",
+      "When global sourcing is the right answer for your spec, we identify, evaluate, and procure from verified manufacturers across Asia, Europe, and beyond.",
   },
 ];
 
@@ -118,28 +117,28 @@ const supplyColumns = [
 
 const advantages = [
   {
-    icon: AfricaIcon,
-    title: "Africa-Focused",
-    description:
-      "Deep understanding of African industrial markets, logistics corridors, and regulatory landscapes.",
-  },
-  {
-    icon: SourcingIcon,
-    title: "Globally Sourced",
-    description:
-      "Direct relationships with verified OEMs across Asia, Europe, and beyond — competitive pricing, reliable quality.",
-  },
-  {
     icon: HandshakeIcon,
     title: "Locally Built",
     description:
-      "In-country design, manufacturing, and assembly. Equipment that works in our climate and operating realities.",
+      "In-country design, fabrication, and assembly. Systems that work in our climate, our infrastructure, and our operating realities.",
+  },
+  {
+    icon: AfricaIcon,
+    title: "Africa-Focused",
+    description:
+      "Deep understanding of African industrial markets, logistics corridors, regulatory landscapes, and on-the-ground service.",
   },
   {
     icon: ClockIcon,
-    title: "End-to-End Support",
+    title: "End-to-End Lifecycle",
     description:
-      "From sourcing and procurement through installation, operator training, spares, and long-term maintenance.",
+      "Installation, operator training, spares, and long-term maintenance — one accountable team across the entire asset lifecycle.",
+  },
+  {
+    icon: SourcingIcon,
+    title: "Trusted Global Sourcing",
+    description:
+      "When the spec calls for it, direct relationships with verified OEMs across Asia and Europe — competitive pricing, reliable quality.",
   },
 ];
 
@@ -171,8 +170,6 @@ export default function HomePage() {
       />
 
       <HomeHero />
-
-      <PartnersStrip />
 
       {/* Industries — asymmetric editorial grid */}
       <section className="section-padding bg-graphite-100">
@@ -378,10 +375,10 @@ export default function HomePage() {
       {/* Cape-to-Cairo pull quote — moved up out of the footer for visibility */}
       <section className="bg-white border-t border-graphite-300/40 py-14 md:py-20">
         <div className="container-site">
-          <p className="reveal text-center font-heading text-2xl md:text-3xl lg:text-4xl italic text-graphite-900 max-w-3xl mx-auto leading-relaxed tracking-tight">
-            <span className="text-accent-500 not-italic">“</span>
-            Cape to Cairo, in the African spirit of trade.
-            <span className="text-accent-500 not-italic">”</span>
+          <p className="reveal text-center font-heading text-2xl md:text-3xl lg:text-4xl text-graphite-900 max-w-3xl mx-auto leading-relaxed tracking-tight">
+            <span className="text-accent-500">“</span>
+            Cape to Cairo. Designed, built, and supported on the ground.
+            <span className="text-accent-500">”</span>
           </p>
         </div>
       </section>
