@@ -1,0 +1,2 @@
+# Director signature: local PDF rendering only, never deploy
+/public/private
