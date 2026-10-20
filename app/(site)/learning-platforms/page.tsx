@@ -4,8 +4,8 @@ import { Award, BarChart3, BookOpen, ClipboardCheck, Users, Video } from "lucide
 import { Button, CTABand, CheckList, PageHero, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Learning Platforms",
-  description: "Learning management systems and e-learning platforms for training providers, schools and corporate teams in South Africa.",
+  title: "Learning Management Systems & E-Learning Platforms South Africa",
+  description: "LMS and e-learning platform development in South Africa: online course platforms, corporate training portals, assessments and certificates by Letacom (Pty) Ltd.",
   alternates: { canonical: "/learning-platforms" },
 };
 
@@ -21,7 +21,7 @@ const features = [
 export default function LearningPage() {
   return (
     <>
-      <PageHero
+      <PageHero crumbs={[{ href: "/learning-platforms", label: "Learning Platforms" }]}
         eyebrow="Learning platforms"
         title="Online learning platforms that are simple to run"
         intro="We implement and customise learning management systems (LMS) for training providers, schools, NGOs and corporate teams, so you can deliver, track and certify learning online."

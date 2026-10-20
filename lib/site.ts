@@ -22,7 +22,8 @@ export const nav = [
   { href: "/services", label: "Services" },
   { href: "/software-development", label: "Software" },
   { href: "/learning-platforms", label: "Learning Platforms" },
-  { href: "/products", label: "Digital Products" },
+  { href: "/marketplace", label: "Marketplace" },
+  { href: "/insights", label: "Insights" },
   { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
 ] as const;

@@ -27,7 +27,7 @@ export function Footer() {
         <div>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Company</h2>
           <ul className="space-y-2 text-sm">
-            {[{ href: "/", label: "Home" }, ...nav, { href: "/contact", label: "Contact Us" }].map((l) => (
+            {[{ href: "/", label: "Home" }, ...nav, { href: "/website-development", label: "Website Development" }, { href: "/products", label: "Digital Products" }, { href: "/contact", label: "Contact Us" }].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-white">{l.label}</Link>
               </li>
@@ -36,6 +36,14 @@ export function Footer() {
         </div>
 
         <div>
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Marketplace</h2>
+          <ul className="mb-8 space-y-2 text-sm">
+            {[{ href: "/marketplace", label: "Marketplace" }, { href: "/marketplace/apis", label: "API Marketplace" }, { href: "/marketplace/templates", label: "Templates & Resources" }].map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:text-white">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Policies</h2>
           <ul className="space-y-2 text-sm">
             {legalNav.map((l) => (

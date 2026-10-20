@@ -4,8 +4,8 @@ import { ServiceIcon } from "@/components/ServiceIcon";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Products & Services",
-  description: "Custom software, websites, e-commerce, learning management systems, automation, UI/UX design, integrations and support from Letacom (Pty) Ltd.",
+  title: "Software, Website & Digital Services South Africa",
+  description: "Custom software development, website design, e-commerce, learning management systems, business automation, UI/UX design, software integration and support from Letacom (Pty) Ltd.",
   alternates: { canonical: "/services" },
 };
 
@@ -14,11 +14,11 @@ const workflow = ["Browse services", "Select a service", "Request a quote", "Rec
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
+      <PageHero crumbs={[{ href: "/services", label: "Services" }]}
         eyebrow="Products & services"
         title="Digital services priced by written quotation"
         intro="Every custom service is scoped and quoted individually in South African Rand. Choose a service below and request a quote; we respond within one business day."
-        image="/media/data-code.jpg"
+        image="/media/business-team-planning-meeting.jpg"
       >
         <Button href="/contact">Request a Quote</Button>
       </PageHero>
@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <Section>
         <div className="space-y-6">
           {services.map((s) => (
-            <article key={s.slug} id={s.slug} className="scroll-mt-24 grid gap-8 rounded-3xl border border-line p-6 sm:p-10 lg:grid-cols-[1.2fr_1fr]">
+            <article key={s.slug} id={s.slug} data-reveal className="scroll-mt-24 grid gap-8 rounded-3xl border border-line p-6 sm:p-10 lg:grid-cols-[1.2fr_1fr]">
               <div>
                 <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand">
                   <ServiceIcon name={s.icon} size={24} />
@@ -59,6 +59,20 @@ export default function ServicesPage() {
         </div>
       </Section>
       <CTABand />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: services.map((s, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              item: { "@type": "Service", name: s.title, description: s.description, url: `https://letacom.co.za/services#${s.slug}`, provider: { "@id": "https://letacom.co.za/#organization" }, areaServed: { "@type": "Country", name: "South Africa" } },
+            })),
+          }),
+        }}
+      />
     </>
   );
 }

@@ -4,8 +4,8 @@ import { Boxes, Database, LayoutDashboard, Plug, ShieldCheck, Workflow } from "l
 import { Button, CTABand, CheckList, PageHero, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Software Development",
-  description: "Custom business software, web applications, portals, automation and integrations built by Letacom (Pty) Ltd in South Africa.",
+  title: "Custom Software Development South Africa",
+  description: "Custom software development in South Africa: business applications, SaaS and web applications, portals, automation and integrations by Letacom (Pty) Ltd.",
   alternates: { canonical: "/software-development" },
 };
 
@@ -29,7 +29,7 @@ const phases = [
 export default function SoftwarePage() {
   return (
     <>
-      <PageHero
+      <PageHero crumbs={[{ href: "/software-development", label: "Software Development" }]}
         eyebrow="Software development"
         title="Custom software built around your business"
         intro="We build reliable web-based applications that replace spreadsheets, paperwork and manual processes, delivered in clear milestones with full documentation."
@@ -69,7 +69,7 @@ export default function SoftwarePage() {
           </div>
           <div className="space-y-6">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-              <Image src="/media/hero-developers.jpg" alt="Software developers at work" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/media/developers-collaborating-laptop.jpg" alt="Software developers collaborating on code" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="rounded-2xl border border-line bg-white p-6">
               <h3 className="mb-4 font-bold text-ink">Every project includes</h3>

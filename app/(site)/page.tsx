@@ -1,9 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, ClipboardList, FileSignature, Gauge, Handshake, LockKeyhole, MapPin, MessagesSquare, Rocket, Smartphone, Wrench } from "lucide-react";
 import { Button, CTABand, Container, Section, SectionHeading } from "@/components/ui";
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { FaqList } from "@/components/FaqList";
+import { HeroVideo } from "@/components/effects";
+import { ListingCard } from "@/components/marketplace";
+import { listings } from "@/lib/catalogue";
 import { services } from "@/lib/services";
 import { faqs } from "@/lib/faqs";
 import { company } from "@/lib/site";
@@ -22,28 +26,34 @@ const steps = [
   { icon: Rocket, title: "Delivery", text: "We deliver in agreed milestones, with review and approval at each stage." },
 ];
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-950 text-white">
-        <Image src="/media/hero-developers.jpg" alt="" fill priority sizes="100vw" className="object-cover opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-900/30" />
+        <div className="absolute inset-0"><HeroVideo src="/media/video/hero-team-coding.mp4" poster="/media/hero-team-coding-poster.jpg" /></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/80 to-navy-950/40" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-950/60 to-transparent" />
         <Container className="relative py-24 sm:py-32 lg:py-40">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80">
             <MapPin size={14} className="text-[#7fa8ff]" aria-hidden />
             Registered South African company &middot; Reg. No. {company.registration}
           </p>
           <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl">
-            Building Smarter Digital Solutions for Modern Businesses.
+            Building Smarter Digital Solutions for <span className="text-[#7fa8ff]">Modern Businesses.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
             Letacom (Pty) Ltd is a South African technology company delivering custom software, professional websites, digital business tools and innovative learning platforms that help businesses grow, automate and succeed.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             <Button href="/services">Explore Our Services</Button>
-            <Button href="/contact" variant="light">Request a Quote</Button>
+            <Button href="/marketplace" variant="light">Explore Marketplace</Button>
           </div>
+          <a href="/contact" className="mt-6 inline-block text-sm font-semibold text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline">Or request a quote</a>
         </Container>
       </section>
 
@@ -74,8 +84,8 @@ export default function Home() {
             </ul>
             <Button href="/about" variant="ghost" className="mt-8">More about Letacom</Button>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-            <Image src="/media/team-collaboration.jpg" alt="Letacom team collaborating on a client project" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+          <div data-reveal className="group relative aspect-[4/3] overflow-hidden rounded-3xl">
+            <Image src="/media/diverse-team-workspace.jpg" alt="Professionals collaborating in a modern South African office" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
           </div>
         </div>
       </Section>
@@ -85,8 +95,8 @@ export default function Home() {
         <SectionHeading eyebrow="Products & services" title="What we deliver" intro="Ten focused service lines covering the full lifecycle of a digital product." />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {services.map((s) => (
-            <Link key={s.slug} href={`/services#${s.slug}`} className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-lg hover:shadow-navy-900/5">
-              <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-soft text-brand">
+            <Link key={s.slug} href={`/services#${s.slug}`} data-reveal className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-navy-900/[0.07]">
+              <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
                 <ServiceIcon name={s.icon} size={22} />
               </span>
               <h3 className="font-bold text-ink">{s.title}</h3>
@@ -103,7 +113,7 @@ export default function Home() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl lg:aspect-auto">
-            <Image src="/media/code-laptop.jpg" alt="Developer writing application code" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
+            <Image src="/media/developers-collaborating-laptop.jpg" alt="Two developers reviewing work on a laptop" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
           </div>
           <div>
             <SectionHeading eyebrow="Technology capabilities" title="Engineered for performance, security and growth" />
@@ -129,7 +139,7 @@ export default function Home() {
         </div>
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map(({ icon: Icon, title, text }, i) => (
-            <li key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+            <li key={title} data-reveal className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-300 hover:border-[#7fa8ff]/40 hover:bg-white/[0.06]">
               <div className="flex items-center justify-between">
                 <Icon size={24} className="text-[#7fa8ff]" aria-hidden />
                 <span className="text-sm font-semibold text-white/40">0{i + 1}</span>
@@ -139,6 +149,17 @@ export default function Home() {
             </li>
           ))}
         </ol>
+      </Section>
+
+      {/* Marketplace */}
+      <Section className="bg-surface">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading eyebrow="Digital marketplace" title="Software, APIs, tools and templates" intro="Browse Letacom products and services and request a quote. Online payments are coming soon." />
+          <Button href="/marketplace" variant="secondary">Explore Marketplace</Button>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {listings.filter((l) => l.featured).slice(0, 3).map((l) => <ListingCard key={l.slug} listing={l} />)}
+        </div>
       </Section>
 
       {/* FAQs */}

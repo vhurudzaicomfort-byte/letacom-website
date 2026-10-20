@@ -5,8 +5,8 @@ import { CTABand, PageHero, Section, SectionHeading } from "@/components/ui";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Letacom (Pty) Ltd is a CIPC-registered South African technology company based in Pretoria, Gauteng.",
+  title: { absolute: "About Letacom (Pty) Ltd | South African Software Company" },
+  description: "Letacom (Pty) Ltd (Reg. No. 2023/189890/07) is a CIPC-registered South African software development and digital solutions company based in Pretoria, Gauteng.",
   alternates: { canonical: "/about" },
 };
 
@@ -34,7 +34,8 @@ export default function AboutPage() {
         eyebrow="About us"
         title="A South African technology company"
         intro="Letacom (Pty) Ltd designs, builds and supports software, websites, e-commerce, learning platforms and digital products for businesses and organisations."
-        image="/media/team-meeting.jpg"
+        image="/media/african-tech-team-office.jpg"
+        crumbs={[{ href: "/about", label: "About" }]}
       />
 
       <Section>
@@ -54,7 +55,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-            <Image src="/media/team-collaboration.jpg" alt="Team discussing a digital project" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+            <Image src="/media/consultants-reviewing-project.jpg" alt="Consultants discussing a client project" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           </div>
         </div>
       </Section>
@@ -91,6 +92,9 @@ export default function AboutPage() {
             <p className="flex gap-2 border-t border-line px-6 py-4 text-xs text-ink-subtle">
               <Scale size={14} className="mt-0.5 shrink-0" aria-hidden />
               Operating from South Africa and governed by South African law.
+            </p>
+            <p className="border-t border-line px-6 py-4 text-xs leading-relaxed text-ink-subtle">
+              This is the official website of Letacom (Pty) Ltd, the South African company registered under number {company.registration}. Information published elsewhere about businesses with similar names does not describe this company&apos;s registration, services or contact details unless it matches the details on this page.
             </p>
           </div>
         </div>

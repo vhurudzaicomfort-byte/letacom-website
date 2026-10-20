@@ -6,7 +6,7 @@ import { Container, PageHero } from "@/components/ui";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: { absolute: "Contact Letacom | Request a Quote" },
   description: "Contact Letacom (Pty) Ltd for quotations and support. Email hello@letacom.co.za or call +27 63 076 9938.",
   alternates: { canonical: "/contact" },
 };
@@ -19,7 +19,7 @@ export default function ContactPage() {
   ];
   return (
     <>
-      <PageHero
+      <PageHero crumbs={[{ href: "/contact", label: "Contact" }]}
         eyebrow="Contact us"
         title="Request a quote or speak to our team"
         intro="Send us your enquiry and we will respond within one business day. For custom services, we confirm your requirements and then issue a written quotation."

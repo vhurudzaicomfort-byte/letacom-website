@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { ReactNode } from "react";
+import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
@@ -21,7 +22,7 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 
 export function SectionHeading({ eyebrow, title, intro, center = false }: { eyebrow?: string; title: string; intro?: string; center?: boolean }) {
   return (
-    <div className={`mb-12 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
+    <div data-reveal className={`mb-12 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
       {intro && <p className="mt-4 text-lg leading-relaxed text-ink-muted">{intro}</p>}
@@ -31,7 +32,7 @@ export function SectionHeading({ eyebrow, title, intro, center = false }: { eyeb
 
 export function Button({ href, children, variant = "primary", className = "" }: { href: string; children: ReactNode; variant?: "primary" | "secondary" | "light" | "ghost"; className?: string }) {
   const styles = {
-    primary: "bg-brand text-white hover:bg-brand-deep shadow-sm shadow-brand/20",
+    primary: "bg-brand text-white hover:bg-brand-deep shadow-sm shadow-brand/20 hover:shadow-md hover:shadow-brand/30 active:scale-[0.98]",
     secondary: "bg-white text-ink ring-1 ring-line hover:ring-ink/30",
     light: "bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/15",
     ghost: "text-brand hover:text-brand-deep px-0",
@@ -39,12 +40,12 @@ export function Button({ href, children, variant = "primary", className = "" }: 
   return (
     <Link href={href} className={`group inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all ${styles} ${className}`}>
       {children}
-      <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
     </Link>
   );
 }
 
-export function PageHero({ eyebrow, title, intro, image, children }: { eyebrow: string; title: string; intro: string; image?: string; children?: ReactNode }) {
+export function PageHero({ eyebrow, title, intro, image, children, crumbs }: { eyebrow: string; title: string; intro: string; image?: string; children?: ReactNode; crumbs?: Crumb[] }) {
   return (
     <section className="relative overflow-hidden bg-navy-900 text-white">
       {image && (
@@ -53,7 +54,8 @@ export function PageHero({ eyebrow, title, intro, image, children }: { eyebrow: 
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/90 to-navy-900/40" />
         </>
       )}
-      <Container className="relative py-20 sm:py-28">
+      <Container className="relative py-16 sm:py-24">
+        {crumbs && <Breadcrumbs items={crumbs} dark />}
         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#7fa8ff]">{eyebrow}</p>
         <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">{intro}</p>
@@ -80,7 +82,7 @@ export function CTABand({ title = "Have a project in mind?", text = "Tell us wha
   return (
     <section className="py-20">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-navy-900 px-6 py-14 text-center sm:px-12">
+        <div data-reveal className="relative overflow-hidden rounded-3xl bg-navy-900 px-6 py-14 text-center sm:px-12">
           <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-brand/25 blur-3xl" />
           <h2 className="relative text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
           <p className="relative mx-auto mt-4 max-w-xl text-white/70">{text}</p>

@@ -19,13 +19,13 @@ export function Header() {
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-1 xl:flex">
           {nav.map((item) => {
-            const active = pathname === item.href;
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors ${active ? "text-brand" : "text-ink-muted hover:text-ink"}`}
+                className={`relative whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-[13px] after:h-0.5 after:origin-left after:rounded-full after:bg-brand after:transition-transform after:duration-300 ${active ? "text-brand after:scale-x-100" : "text-ink-muted after:scale-x-0 hover:text-ink hover:after:scale-x-100"}`}
               >
                 {item.label}
               </Link>

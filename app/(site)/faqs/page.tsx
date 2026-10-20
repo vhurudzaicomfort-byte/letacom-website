@@ -4,7 +4,7 @@ import { CTABand, Container, PageHero } from "@/components/ui";
 import { faqs } from "@/lib/faqs";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  title: { absolute: "FAQs | Letacom (Pty) Ltd" },
   description: "Answers about Letacom services, quotations, payments, delivery, refunds, support and privacy.",
   alternates: { canonical: "/faqs" },
 };
@@ -18,7 +18,7 @@ const jsonLd = {
 export default function FaqsPage() {
   return (
     <>
-      <PageHero eyebrow="FAQs" title="Frequently asked questions" intro="Everything you need to know about working with Letacom, from quotations and payments to delivery, refunds and privacy." />
+      <PageHero crumbs={[{ href: "/faqs", label: "FAQs" }]} eyebrow="FAQs" title="Frequently asked questions" intro="Everything you need to know about working with Letacom, from quotations and payments to delivery, refunds and privacy." />
       <Container className="max-w-4xl py-16 sm:py-20">
         <FaqList items={faqs} />
       </Container>

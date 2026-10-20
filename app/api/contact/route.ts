@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getListing } from "@/lib/catalogue";
 
 // Recipient and provider keys come from environment variables only (never shipped to the browser).
 // RESEND_API_KEY + RESEND_FROM -> Resend; otherwise falls back to FormSubmit (no key required).
@@ -40,13 +41,17 @@ export async function POST(request: Request) {
   const phone = clean(body.phone, 20);
   const service = clean(body.service, 100);
   const message = clean(body.message, 5000);
+  const companyName = clean(body.company, 120);
+  const quantity = clean(body.quantity, 120);
+  const contactMethod = ["Email", "Phone call", "WhatsApp"].includes(String(body.contactMethod)) ? String(body.contactMethod) : "Email";
+  const product = getListing(clean(body.product, 80));
 
-  if (name.length < 2 || !emailRe.test(email) || (phone && !phoneRe.test(phone)) || !service || message.length < 10 || body.consent !== "yes") {
+  if (name.length < 2 || !emailRe.test(email) || !phoneRe.test(phone) || !service || message.length < 10 || body.consent !== "yes") {
     return NextResponse.json({ error: "Please complete all required fields correctly." }, { status: 400 });
   }
 
   for (const [k, t] of recent) if (now - t > DUPLICATE_WINDOW) recent.delete(k);
-  const fingerprint = `${email.toLowerCase()}|${message.slice(0, 200)}`;
+  const fingerprint = `${email.toLowerCase()}|${product?.slug ?? service}|${message.slice(0, 200)}`;
   if (recent.has(fingerprint)) {
     return NextResponse.json({ success: true, duplicate: true });
   }
@@ -58,12 +63,15 @@ export async function POST(request: Request) {
   }
 
   const submittedAt = new Intl.DateTimeFormat("en-ZA", { dateStyle: "full", timeStyle: "long", timeZone: "Africa/Johannesburg" }).format(now);
-  const subject = `Website enquiry: ${service} - ${name}`;
+  const subject = product ? `Quote request: ${product.name} (${product.ref}) - ${name}` : `Website enquiry: ${service} - ${name}`;
   const rows: [string, string][] = [
     ["Full name", name],
+    ["Company", companyName || "Not supplied"],
     ["Email", email],
-    ["Telephone", phone || "Not supplied"],
-    ["Service", service],
+    ["Contact number", phone],
+    ["Preferred contact", contactMethod],
+    ["Product / service", product ? `${product.name} (Ref. ${product.ref})` : service],
+    ["Quantity / licence", quantity || "Not specified"],
     ["Submitted", `${submittedAt} (SAST)`],
   ];
   const text = `${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nMessage:\n${message}\n`;
@@ -98,12 +106,8 @@ export async function POST(request: Request) {
           _replyto: email,
           _template: "table",
           _captcha: "false",
-          "Full name": name,
-          Email: email,
-          Telephone: phone || "Not supplied",
-          Service: service,
+          ...Object.fromEntries(rows),
           Message: message,
-          Submitted: `${submittedAt} (SAST)`,
         }),
       });
       const json = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };

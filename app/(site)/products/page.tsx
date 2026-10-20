@@ -4,8 +4,8 @@ import { Clock, FileDown, Info, LayoutTemplate, MonitorSmartphone, GraduationCap
 import { Button, CTABand, Container, PageHero, Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Digital Products",
-  description: "Letacom digital products: website templates, business templates, online tools and learning resources, delivered electronically.",
+  title: "Digital Products South Africa | Templates & Online Tools",
+  description: "Letacom digital products: business templates, Excel spreadsheets, online tools and learning resources, delivered electronically. Browse the catalogue and enquire.",
   alternates: { canonical: "/products" },
 };
 
@@ -21,7 +21,7 @@ const journey = ["Browse products", "View product details", "Review price and te
 export default function ProductsPage() {
   return (
     <>
-      <PageHero
+      <PageHero crumbs={[{ href: "/products", label: "Digital Products" }]}
         eyebrow="Digital products"
         title="Ready-made digital products, delivered electronically"
         intro="Templates, online tools and learning resources built by Letacom. Digital products are delivered by download link or account access. No physical goods are shipped."
@@ -73,7 +73,7 @@ export default function ProductsPage() {
           <Link href="/delivery-policy" className="text-brand underline">Delivery & Fulfilment Policy</Link> and{" "}
           <Link href="/refund-policy" className="text-brand underline">Refund & Cancellation Policy</Link>.
         </p>
-        <Button href="/contact?service=Digital%20product%20enquiry" className="mt-6">Enquire about a product</Button>
+        <div className="mt-6 flex flex-wrap gap-3"><Button href="/marketplace">Browse the marketplace</Button><Button href="/contact?service=Digital%20product%20enquiry" variant="secondary">Enquire about a product</Button></div>
       </Section>
       <CTABand />
     </>

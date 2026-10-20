@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/:path*", has: [{ type: "host", value: "letacom-website.vercel.app" }], destination: "https://letacom.co.za/:path*", permanent: true },
       { source: "/request-quote", destination: "/contact", permanent: true },
       { source: "/solutions", destination: "/services", permanent: true },
       { source: "/industries/:path*", destination: "/services", permanent: true },
