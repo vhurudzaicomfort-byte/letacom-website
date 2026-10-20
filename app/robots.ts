@@ -1,13 +1,6 @@
 import type { MetadataRoute } from "next";
+import { company } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://letacom.vercel.app";
-
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  };
+  return { rules: [{ userAgent: "*", allow: "/", disallow: "/api/" }], sitemap: `${company.url}/sitemap.xml` };
 }

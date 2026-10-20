@@ -1,62 +1,70 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Ubuntu } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
-import { MobileStickyCTABar } from "@/components/layout/MobileStickyCTABar";
-import { RevealProvider } from "@/components/effects/RevealProvider";
+import type { Metadata, Viewport } from "next";
+import { Manrope } from "next/font/google";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { company } from "@/lib/site";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
+const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], display: "swap" });
 
-const ubuntu = Ubuntu({
-  variable: "--font-ubuntu",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
+const description =
+  "Letacom (Pty) Ltd is a registered South African technology company delivering custom software, professional websites, e-commerce, learning platforms and digital business tools.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(company.url),
   title: {
-    default: "Letacom South Africa — Industrial Supply & Procurement",
-    template: "%s | Letacom South Africa",
+    default: "Letacom (Pty) Ltd | Software, Websites & Learning Platforms",
+    template: "%s | Letacom (Pty) Ltd",
   },
-  description:
-    "Africa-focused, globally sourced industrial supply and procurement solutions. Serving breweries, manufacturing, transport & logistics, and distribution across Southern Africa.",
-  keywords: [
-    "industrial supply South Africa",
-    "procurement Africa",
-    "brewery equipment",
-    "draught systems",
-    "China to Africa sourcing",
-    "industrial distribution",
-  ],
+  description,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_ZA",
-    siteName: "Letacom South Africa",
+    url: company.url,
+    siteName: "Letacom (Pty) Ltd",
+    title: "Letacom (Pty) Ltd | Building Smarter Digital Solutions",
+    description,
+    images: [{ url: "/media/hero-developers.jpg", width: 1920, height: 1280, alt: "Letacom software development" }],
+  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = { themeColor: "#0a1628" };
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: company.name,
+  legalName: company.legalName,
+  url: company.url,
+  logo: `${company.url}/brand/letacom-logo.png`,
+  email: company.email,
+  telephone: company.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "21 Featherbrook Estate, 47 Meadow Avenue, Equestria",
+    addressLocality: "Pretoria",
+    addressRegion: "Gauteng",
+    postalCode: "0184",
+    addressCountry: "ZA",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${ubuntu.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <RevealProvider />
+    <html lang="en-ZA" className={manrope.variable}>
+      <body className="flex min-h-screen flex-col font-sans">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2">
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
-        <WhatsAppButton />
-        <MobileStickyCTABar />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       </body>
     </html>
   );

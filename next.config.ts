@@ -1,22 +1,29 @@
 import type { NextConfig } from "next";
 
+const securityHeaders = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(self)" },
+];
+
 const nextConfig: NextConfig = {
-  images: {
-    // Modern format ladder — Next.js negotiates the smallest acceptable format
-    // for the requesting browser (AVIF first, WebP fallback, original last).
-    formats: ["image/avif", "image/webp"],
-    // 1y cache for optimized variants
-    minimumCacheTTL: 31_536_000,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.pexels.com",
-      },
-    ],
+  poweredByHeader: false,
+  images: { formats: ["image/avif", "image/webp"], minimumCacheTTL: 31_536_000 },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
+  },
+  async redirects() {
+    return [
+      { source: "/request-quote", destination: "/contact", permanent: true },
+      { source: "/solutions", destination: "/services", permanent: true },
+      { source: "/industries/:path*", destination: "/services", permanent: true },
+      { source: "/products/:category", destination: "/products", permanent: true },
+      { source: "/refund", destination: "/refund-policy", permanent: true },
+      { source: "/privacy", destination: "/privacy-policy", permanent: true },
+      { source: "/terms", destination: "/terms-and-conditions", permanent: true },
+    ];
   },
 };
 
