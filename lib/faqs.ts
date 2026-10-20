@@ -8,7 +8,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Is Letacom a registered South African company?",
-    a: "Yes. Letacom (Pty) Ltd is a private company registered with the Companies and Intellectual Property Commission (CIPC) under registration number 2023/189890/07, is registered with the South African Revenue Service (SARS) for income tax, and has its registered office in Pretoria, Gauteng.",
+    a: "Yes. Letacom (Pty) Ltd is a private company registered with the Companies and Intellectual Property Commission (CIPC) under registration number 2023/189890/07, is registered with the South African Revenue Service (SARS), and has its registered office in Pretoria, Gauteng.",
     link: { href: "/about", label: "About Letacom" },
   },
   {

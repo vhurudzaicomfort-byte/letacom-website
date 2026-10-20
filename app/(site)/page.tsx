@@ -6,6 +6,7 @@ import { Button, CTABand, Container, Section, SectionHeading } from "@/component
 import { ServiceIcon } from "@/components/ServiceIcon";
 import { FaqList } from "@/components/FaqList";
 import { HeroVideo } from "@/components/effects";
+import { SolutionsGrid } from "@/components/SolutionsGrid";
 import { ListingCard } from "@/components/marketplace";
 import { listings } from "@/lib/catalogue";
 import { services } from "@/lib/services";
@@ -107,6 +108,19 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </Section>
+
+      {/* Solutions */}
+      <Section className="bg-navy-950 text-white">
+        <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+          <div data-reveal className="max-w-2xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#7fa8ff]">Solutions</p>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Capabilities across four pillars</h2>
+            <p className="mt-4 text-lg text-white/65">Build and run your core systems, automate with data and AI, stay secure and compliant, and grow your digital presence.</p>
+          </div>
+          <Button href="/solutions" variant="light">Explore solutions</Button>
+        </div>
+        <SolutionsGrid dark />
       </Section>
 
       {/* Capabilities */}

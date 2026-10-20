@@ -3,7 +3,7 @@ import { company } from "@/lib/site";
 import { apiListings, categories, listings } from "@/lib/catalogue";
 import { insights } from "@/lib/insights";
 
-const core = ["", "/services", "/software-development", "/website-development", "/learning-platforms", "/marketplace", "/marketplace/apis", "/marketplace/templates", "/products", "/about", "/faqs", "/insights", "/contact"];
+const core = ["", "/services", "/solutions", "/software-development", "/website-development", "/learning-platforms", "/marketplace", "/marketplace/apis", "/marketplace/templates", "/products", "/about", "/faqs", "/insights", "/contact"];
 const legal = ["/privacy-policy", "/refund-policy", "/terms-and-conditions", "/delivery-policy", "/payment-security"];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -31,7 +31,7 @@ export function Footer() {
         <div>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Company</h2>
           <ul className="space-y-2 text-sm">
-            {[{ href: "/", label: "Home" }, ...nav, { href: "/website-development", label: "Website Development" }, { href: "/products", label: "Digital Products" }, { href: "/contact", label: "Contact Us" }].map((l) => (
+            {[{ href: "/", label: "Home" }, ...nav, { href: "/software-development", label: "Software Development" }, { href: "/website-development", label: "Website Development" }, { href: "/products", label: "Digital Products" }, { href: "/contact", label: "Contact Us" }].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-white">{l.label}</Link>
               </li>

@@ -41,3 +41,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+
+# Director signature: used only when rendering PDFs locally, never deployed
+/public/private

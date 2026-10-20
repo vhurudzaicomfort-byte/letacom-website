@@ -6,7 +6,7 @@ export const company = {
   registration: "2023/189890/07",
   registeredOn: "1 November 2023",
   // Taxpayer reference number deliberately not published.
-  taxStatus: "Registered with SARS for income tax",
+  taxStatus: "Registered with SARS",
   country: "South Africa",
   url: "https://letacom.co.za",
   email: "hello@letacom.co.za",
@@ -23,7 +23,7 @@ export const company = {
 
 export const nav = [
   { href: "/services", label: "Services" },
-  { href: "/software-development", label: "Software" },
+  { href: "/solutions", label: "Solutions" },
   { href: "/learning-platforms", label: "Learning Platforms" },
   { href: "/marketplace", label: "Marketplace" },
   { href: "/insights", label: "Insights" },
@@ -32,11 +32,11 @@ export const nav = [
 ] as const;
 
 export const legalNav = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/refund-policy", label: "Refund & Cancellation Policy" },
-  { href: "/terms-and-conditions", label: "Terms & Conditions" },
-  { href: "/delivery-policy", label: "Delivery & Fulfilment Policy" },
-  { href: "/payment-security", label: "Payment & Security" },
+  { href: "/privacy-policy", label: "Privacy Policy", pdf: "/downloads/policies/letacom-privacy-policy.pdf" },
+  { href: "/refund-policy", label: "Refund & Cancellation Policy", pdf: "/downloads/policies/letacom-refund-policy.pdf" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions", pdf: "/downloads/policies/letacom-terms-and-conditions.pdf" },
+  { href: "/delivery-policy", label: "Delivery & Fulfilment Policy", pdf: "/downloads/policies/letacom-delivery-policy.pdf" },
+  { href: "/payment-security", label: "Payment & Security", pdf: "/downloads/policies/letacom-payment-security.pdf" },
 ] as const;
 
 export const downloads = [

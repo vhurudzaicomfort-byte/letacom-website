@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Loader2, Package, Send } from "lucide-react";
 import { services } from "@/lib/services";
 import { getListing } from "@/lib/catalogue";
+import { allSolutions } from "@/lib/solutions";
 import { company } from "@/lib/site";
 
 type Status = { type: "idle" | "sending" | "success" | "error"; message?: string };
@@ -19,7 +20,7 @@ export function ContactForm() {
   const params = useSearchParams();
   const product = getListing(params.get("product") ?? "");
   const preset = params.get("service") ?? "";
-  const initialService = product ? MARKETPLACE : services.some((s) => s.title === preset) || preset === "Digital product enquiry" ? preset : "";
+  const initialService = product ? MARKETPLACE : services.some((s) => s.title === preset) || allSolutions.some((s) => s.title === preset) || preset === "Digital product enquiry" ? preset : "";
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [errors, setErrors] = useState<Errors>({});
   const startedAt = useRef(0);
@@ -133,9 +134,16 @@ export function ContactForm() {
           <select id="service" name="service" defaultValue={initialService} className={field} {...aria("service")}>
             <option value="" disabled>Select an option</option>
             {product && <option value={MARKETPLACE}>{product.name} ({product.ref})</option>}
-            {services.map((s) => (
-              <option key={s.slug} value={s.title}>{s.title}</option>
-            ))}
+            <optgroup label="Services">
+              {services.map((s) => (
+                <option key={s.slug} value={s.title}>{s.title}</option>
+              ))}
+            </optgroup>
+            <optgroup label="Solutions">
+              {allSolutions.filter((s) => !services.some((x) => x.title === s.title)).map((s) => (
+                <option key={s.slug} value={s.title}>{s.title}</option>
+              ))}
+            </optgroup>
             <option value="Digital product enquiry">Digital product enquiry</option>
             <option value="General enquiry">General enquiry</option>
           </select>
