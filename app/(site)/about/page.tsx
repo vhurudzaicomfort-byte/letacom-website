@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Building2, Eye, Scale, ShieldCheck, Target, Users } from "lucide-react";
 import { CTABand, PageHero, Section, SectionHeading } from "@/components/ui";
+import { MapEmbed } from "@/components/MapEmbed";
+import { Downloads } from "@/components/Downloads";
 import { company } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -23,6 +25,7 @@ export default function AboutPage() {
     ["Registration number", company.registration],
     ["Company type", "Private company, registered with CIPC"],
     ["Registration date", company.registeredOn],
+    ["Tax registration", company.taxStatus],
     ["Registered office", company.address.oneLine],
     ["Email", company.email],
     ["Telephone", company.phone],
@@ -96,6 +99,18 @@ export default function AboutPage() {
             <p className="border-t border-line px-6 py-4 text-xs leading-relaxed text-ink-subtle">
               This is the official website of Letacom (Pty) Ltd, the South African company registered under number {company.registration}. Information published elsewhere about businesses with similar names does not describe this company&apos;s registration, services or contact details unless it matches the details on this page.
             </p>
+          </div>
+        </div>
+      </Section>
+      <Section className="bg-surface">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="Downloads" title="Company profile and catalogue" intro="Download our company profile and our services and products catalogue." />
+            <Downloads />
+          </div>
+          <div>
+            <SectionHeading eyebrow="Location" title="Our registered office" />
+            <MapEmbed />
           </div>
         </div>
       </Section>

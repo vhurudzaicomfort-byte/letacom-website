@@ -55,6 +55,15 @@ export function ContactForm() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error || "Something went wrong.");
+      if (json.relay) {
+        const relay = await fetch(json.relay.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(json.relay.payload),
+        });
+        const r = await relay.json().catch(() => ({}));
+        if (!relay.ok || String(r.success) !== "true") throw new Error("We could not send your enquiry right now.");
+      }
       form.reset();
       setStatus({ type: "success", message: `Thank you. Your enquiry${product ? ` about ${product.name} (Ref. ${product.ref})` : ""} has been received and we will respond ${company.responseTime}.` });
     } catch (err) {

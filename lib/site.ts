@@ -5,14 +5,17 @@ export const company = {
   shortName: "Letacom",
   registration: "2023/189890/07",
   registeredOn: "1 November 2023",
+  // Taxpayer reference number deliberately not published.
+  taxStatus: "Registered with SARS for income tax",
   country: "South Africa",
   url: "https://letacom.co.za",
   email: "hello@letacom.co.za",
   phone: "+27 63 076 9938",
   phoneHref: "tel:+27630769938",
   address: {
-    lines: ["21 Featherbrook Estate", "47 Meadow Avenue, Equestria", "Pretoria, Gauteng, 0184", "South Africa"],
-    oneLine: "21 Featherbrook Estate, 47 Meadow Avenue, Equestria, Pretoria, Gauteng, 0184, South Africa",
+    lines: ["47 Meadow Avenue", "Equestria", "Pretoria, Gauteng, 0184", "South Africa"],
+    oneLine: "47 Meadow Avenue, Equestria, Pretoria, Gauteng, 0184, South Africa",
+    mapQuery: "47 Meadow Avenue, Equestria, Pretoria, 0184, South Africa",
   },
   hours: "Monday to Friday, 08:00 to 17:00 (SAST)",
   responseTime: "within one business day",
@@ -34,6 +37,11 @@ export const legalNav = [
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
   { href: "/delivery-policy", label: "Delivery & Fulfilment Policy" },
   { href: "/payment-security", label: "Payment & Security" },
+] as const;
+
+export const downloads = [
+  { href: "/downloads/letacom-company-profile.pdf", label: "Company Profile", description: "Who we are, registration details, services and how we work.", file: "PDF" },
+  { href: "/downloads/letacom-services-catalogue.pdf", label: "Services & Products Catalogue", description: "Our services, marketplace listings and availability.", file: "PDF" },
 ] as const;
 
 export const policyUpdated = "20 October 2026";

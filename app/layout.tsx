@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/effects";
 import { company } from "@/lib/site";
 import "./globals.css";
@@ -57,7 +55,7 @@ const orgJsonLd = {
   telephone: company.phone,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "21 Featherbrook Estate, 47 Meadow Avenue, Equestria",
+    streetAddress: "47 Meadow Avenue, Equestria",
     addressLocality: "Pretoria",
     addressRegion: "Gauteng",
     postalCode: "0184",
@@ -79,14 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-ZA" className={manrope.variable}>
       <body className="flex min-h-screen flex-col font-sans">
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2">
-          Skip to content
-        </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
         <RevealObserver />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([orgJsonLd, siteJsonLd]) }} />
       </body>

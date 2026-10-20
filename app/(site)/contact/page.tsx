@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Building2, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { MapEmbed } from "@/components/MapEmbed";
+import { Downloads } from "@/components/Downloads";
 import { Container, PageHero } from "@/components/ui";
 import { company } from "@/lib/site";
 
@@ -66,10 +68,17 @@ export default function ContactPage() {
             <dl className="space-y-3 text-sm">
               <div><dt className="text-ink-subtle">Registered name</dt><dd className="font-semibold text-ink">{company.legalName}</dd></div>
               <div><dt className="text-ink-subtle">Registration number</dt><dd className="font-semibold text-ink">{company.registration}</dd></div>
+              <div><dt className="text-ink-subtle">Tax registration</dt><dd className="font-semibold text-ink">{company.taxStatus}</dd></div>
               <div><dt className="text-ink-subtle">Country</dt><dd className="font-semibold text-ink">South Africa</dd></div>
             </dl>
           </div>
         </div>
+      </Container>
+      <Container className="pb-16 sm:pb-20">
+        <h2 className="mb-6 text-2xl font-bold text-ink">Find us</h2>
+        <MapEmbed />
+        <h2 className="mb-6 mt-14 text-2xl font-bold text-ink">Company documents</h2>
+        <Downloads />
       </Container>
     </>
   );

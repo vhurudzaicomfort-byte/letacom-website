@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
-import { company, legalNav, nav } from "@/lib/site";
+import { company, downloads, legalNav, nav } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -20,6 +20,10 @@ export function Footer() {
             <div>
               <dt className="inline text-white/50">Registration No: </dt>
               <dd className="inline font-semibold text-white">{company.registration}</dd>
+            </div>
+            <div>
+              <dt className="inline text-white/50">Tax: </dt>
+              <dd className="inline font-semibold text-white">{company.taxStatus}</dd>
             </div>
           </dl>
         </div>
@@ -46,6 +50,11 @@ export function Footer() {
           </ul>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Policies</h2>
           <ul className="space-y-2 text-sm">
+            {downloads.map((d) => (
+              <li key={d.href}>
+                <a href={d.href} download className="hover:text-white">{d.label} (PDF)</a>
+              </li>
+            ))}
             {legalNav.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-white">{l.label}</Link>

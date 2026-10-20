@@ -84,6 +84,7 @@ export async function POST(request: Request) {
 <p style="white-space:pre-wrap;line-height:1.6;background:#f6f8fb;padding:16px;border-radius:8px">${esc(message)}</p>
 <p style="color:#8896a6;font-size:12px">Sent from the enquiry form at letacom.co.za. Reply to this email to respond to the customer directly.</p></div>`;
 
+  let relay: { endpoint: string; payload: Record<string, string> } | undefined;
   try {
     if (process.env.RESEND_API_KEY) {
       const { Resend } = await import("resend");
@@ -98,20 +99,13 @@ export async function POST(request: Request) {
       });
       if (error) throw new Error(error.message);
     } else {
-      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json", Referer: "https://letacom.co.za/contact", Origin: "https://letacom.co.za" },
-        body: JSON.stringify({
-          _subject: subject,
-          _replyto: email,
-          _template: "table",
-          _captcha: "false",
-          ...Object.fromEntries(rows),
-          Message: message,
-        }),
-      });
-      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
-      if (!res.ok || String(json.success) !== "true") throw new Error(json.message || `FormSubmit ${res.status}`);
+      // FormSubmit blocks requests from cloud servers, so the visitor's browser relays the
+      // already-validated message. FORMSUBMIT_ALIAS (the random string FormSubmit issues)
+      // keeps the inbox address out of the response; the plain address is the fallback.
+      relay = {
+        endpoint: `https://formsubmit.co/ajax/${encodeURIComponent(process.env.FORMSUBMIT_ALIAS || to)}`,
+        payload: { _subject: subject, _replyto: email, _template: "table", _captcha: "false", ...Object.fromEntries(rows), Message: message },
+      };
     }
   } catch (err) {
     console.error("Enquiry delivery failed:", err);
@@ -121,5 +115,5 @@ export async function POST(request: Request) {
   list.push(now);
   hits.set(ip, list);
   recent.set(fingerprint, now);
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, relay });
 }
