@@ -14,6 +14,13 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  // Markhold runs as its own Vercel project and is served under /markhold.
+  async rewrites() {
+    return [
+      { source: "/markhold", destination: "https://letacom-creativ.vercel.app/markhold" },
+      { source: "/markhold/:path*", destination: "https://letacom-creativ.vercel.app/markhold/:path*" },
+    ];
+  },
   async redirects() {
     return [
       { source: "/:path*", has: [{ type: "host", value: "letacom-website.vercel.app" }], destination: "https://letacom.co.za/:path*", permanent: true },
